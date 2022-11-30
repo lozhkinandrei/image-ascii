@@ -57,43 +57,43 @@ steps:
   # - "," in fields is always aligned with "{"
   # - "}" is likewise always aligned with "{"
   #
-  # - records:
+  - records:
   #     # How to format equals sign between type constructor and data constructor.
   #     # Possible values:
   #     # - "same_line" -- leave "=" AND data constructor on the same line as the type constructor.
   #     # - "indent N" -- insert a new line and N spaces from the beginning of the next line.
-  #     equals: "indent 2"
+      equals: "indent 2"
   #
   #     # How to format first field of each record constructor.
   #     # Possible values:
   #     # - "same_line" -- "{" and first field goes on the same line as the data constructor.
   #     # - "indent N" -- insert a new line and N spaces from the beginning of the data constructor
-  #     first_field: "indent 2"
+      first_field: "indent 2"
   #
   #     # How many spaces to insert between the column with "," and the beginning of the comment in the next line.
-  #     field_comment: 2
+      field_comment: 2
   #
   #     # How many spaces to insert before "deriving" clause. Deriving clauses are always on separate lines.
-  #     deriving: 2
+      deriving: 2
   #
   #     # How many spaces to insert before "via" clause counted from indentation of deriving clause
   #     # Possible values:
   #     # - "same_line" -- "via" part goes on the same line as "deriving" keyword.
   #     # - "indent N" -- insert a new line and N spaces from the beginning of "deriving" keyword.
-  #     via: "indent 2"
+      via: "indent 2"
   #
   #     # Sort typeclass names in the "deriving" list alphabetically.
-  #     sort_deriving: true
+      # sort_deriving: true
   #
   #     # Whether or not to break enums onto several lines
   #     #
   #     # Default: false
-  #     break_enums: false
+      # break_enums: false
   #
   #     # Whether or not to break single constructor data types before `=` sign
   #     #
   #     # Default: true
-  #     break_single_constructors: true
+      break_single_constructors: false
   #
   #     # Whether or not to curry constraints on function.
   #     #
@@ -273,7 +273,7 @@ steps:
       #   > import Data.Foo (foo)
       #
       # Default: false
-      space_surround: false
+      space_surround: true
 
       # Post qualify option moves any qualifies found in import declarations
       # to the end of the declaration. This also adjust padding for any
@@ -292,7 +292,7 @@ steps:
       #   > import qualified Data.Foo as F
       #
       # Default: false
-      post_qualify: false
+      post_qualify: true
 
       # Automatically group imports based on their module names, with
       # a blank line separating each group. Groups are ordered in
@@ -322,7 +322,7 @@ steps:
       #   > import Control.Monad.MonadError
       #
       # Default: false
-      group_imports: false
+      group_imports: true
 
       # A list of rules specifying how to group modules and how to
       # order the groups.
@@ -410,7 +410,7 @@ steps:
       # - vertical_compact: Similar to vertical, but use only one language pragma.
       #
       # Default: vertical.
-      style: vertical
+      style: compact
 
       # Align affects alignment of closing pragma brackets.
       #
