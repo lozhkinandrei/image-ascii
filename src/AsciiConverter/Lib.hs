@@ -46,7 +46,7 @@ replacePixelColor (PixelRGB r g b) = colorCharacter
         red =  r * 255 :: Double
         green =  g * 255 :: Double
         blue =  b * 255 :: Double
-        color = "rgb(" ++ show (round red) ++ " " ++ show (round green) ++ " " ++ show (round blue) ++ ")" :: String
+        color = "rgb(" ++ show (round red :: Int) ++ " " ++ show (round green :: Int) ++ " " ++ show (round blue :: Int) ++ ")" :: String
         i = floor $ (0.2126 * red + 0.7152 * green + 0.0722 * blue) * brightnessWeight :: Int
         character = [asciiCharactersMap !! i]
         colorCharacter = "<span style='color:" ++ color ++ "'>" ++ character ++ "</span>"
@@ -55,11 +55,11 @@ convertToAscii :: Image VS RGB Double -> Config -> IO String
 convertToAscii img config = do
     let pixelsVector = toVector img
     let pixelsList = toList pixelsVector :: [Pixel RGB Double]
-    let converted = Data.List.map convert pixelsList
+    let converted = Data.List.map convert' pixelsList
     let withLineBreaks = insertAtN (imageWidth config) "<br>" converted
     return $ concat withLineBreaks
 
-    where convert = if imageColor config then replacePixelColor else replacePixel
+    where convert' = if imageColor config then replacePixelColor else replacePixel
 
 
 insertAtN :: Int -> a -> [a] -> [a]
