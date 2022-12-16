@@ -25,7 +25,9 @@ source-repository head
 
 library
   exposed-modules:
-      Lib
+      AsciiConverter.Const
+      AsciiConverter.Lib
+      AsciiConverter.Read
   other-modules:
       Paths_image_ascii
   hs-source-dirs:
@@ -34,8 +36,17 @@ library
   build-depends:
       aeson
     , base >=4.7 && <5
+    , bytestring
+    , conduit
+    , filepath
+    , hip
+    , http-client
+    , http-conduit
+    , http-types
     , scotty ==0.12.1
     , stylish-haskell
+    , text
+    , vector
   default-language: Haskell2010
 
 executable image-ascii-exe
@@ -48,9 +59,18 @@ executable image-ascii-exe
   build-depends:
       aeson
     , base >=4.7 && <5
+    , bytestring
+    , conduit
+    , filepath
+    , hip
+    , http-client
+    , http-conduit
+    , http-types
     , image-ascii
     , scotty ==0.12.1
     , stylish-haskell
+    , text
+    , vector
   default-language: Haskell2010
 
 test-suite image-ascii-test
@@ -64,7 +84,16 @@ test-suite image-ascii-test
   build-depends:
       aeson
     , base >=4.7 && <5
+    , bytestring
+    , conduit
+    , filepath
+    , hip
+    , http-client
+    , http-conduit
+    , http-types
     , image-ascii
     , scotty ==0.12.1
     , stylish-haskell
+    , text
+    , vector
   default-language: Haskell2010

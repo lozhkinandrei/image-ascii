@@ -24,6 +24,15 @@ dependencies:
 - scotty == 0.12.1
 - stylish-haskell 
 - aeson
+- text
+- http-types
+- conduit
+- http-conduit
+- http-client
+- bytestring
+- hip
+- vector
+- filepath
 
 ghc-options:
 - -Wall
