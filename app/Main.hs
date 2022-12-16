@@ -12,7 +12,7 @@ import           Control.Exception      ( SomeException, try )
 import           Control.Monad          ( unless )
 import           Control.Monad.IO.Class
 
-import           Data.Aeson             ( FromJSON, ToJSON )
+import           Data.Aeson             ( ToJSON )
 import           Data.ByteString
 import qualified Data.ByteString.Char8  ( readInt )
 import           Data.Foldable
@@ -32,10 +32,10 @@ maxFileSize = 1024
 
 routes :: ScottyM ()
 routes = do
-    get "/hello" hello
+    get "/convert-url" convertUrl
 
-hello :: ActionM ()
-hello = do
+convertUrl :: ActionM ()
+convertUrl = do
     imageUrl <- param "imageUrl" `rescue` (\_ -> return "") :: ActionM String
     color <- param "color" `rescue` (\_ -> return True) :: ActionM Bool
     width <- param "width" `rescue` (\_ -> return 100) :: ActionM Int
