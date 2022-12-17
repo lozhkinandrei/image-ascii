@@ -1,0 +1,5 @@
+.gitignore
+.stack-work
+.vscode
+dist-newstyle
+Dockerile
