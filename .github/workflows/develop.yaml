@@ -1,7 +1,7 @@
 name: Develop
 
 env:
-  IMAGE_TAG: asia-southeast1-docker.pkg.dev/image-ascii/image-ascii/develop:$GITHUB_SHA
+  IMAGE_TAG: asia-southeast1-docker.pkg.dev/image-ascii/image-ascii/develop:${{github.sha}}
   GCP_REGION: asia-southeast1
 
 on:
@@ -27,7 +27,7 @@ jobs:
         with:
           context: .
           file: Dockerfile
-          tags: image-ascii:latest
+          tags: ${{env.IMAGE_TAG}}
           outputs: type=docker,dest=/tmp/image-ascii.tar
           cache-from: type=gha
           cache-to: type=gha
