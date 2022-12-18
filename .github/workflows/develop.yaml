@@ -22,7 +22,18 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
 
-      - name: Build and export
+      - name: Build first stage
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: Dockerfile
+          tags: image-ascii-build
+          outputs: type=docker,dest=/tmp/image-ascii-build.tar
+          cache-from: type=gha
+          cache-to: type=gha
+          target: build
+      
+      - name: Build second stage
         uses: docker/build-push-action@v2
         with:
           context: .

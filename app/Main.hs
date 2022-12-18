@@ -60,7 +60,7 @@ convertUrl = do
                     res <- liftIO $ try (httpNoBody request') :: ActionM (Either SomeException (Response ()))
 
                     case res of
-                        Left _ -> status status400 >> (json $ BadRequestResponse { err = "Couldn't get the response from provided imageUrl" }) >> finish
+                        Left _ -> status status400 >> (json $ BadRequestResponse { err = "Couldn't get the response from provided imageUrl"}) >> finish
                         Right response -> do
                             let responseHeader = getResponseHeader hContentLength response
                             let contentLength = if Data.Foldable.length responseHeader == 0 then Nothing else Data.ByteString.Char8.readInt $ Prelude.head responseHeader
