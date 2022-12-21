@@ -1,0 +1,21 @@
+footer {
+    position: fixed;
+    padding: 10px;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+    background-color: rgb(133, 66, 66);
+}
+
+.ascii-art {
+    font-family: monospace, fixed;
+    font-size: 6px;
+    line-height: 0.65;
+    font-weight: bold;
+    width: fit-content;
+    background-color: black;
+    color: white;
+    margin-bottom: 50px
+}
