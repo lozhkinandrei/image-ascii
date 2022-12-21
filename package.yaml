@@ -32,6 +32,8 @@ dependencies:
 - hip
 - vector
 - filepath
+- wai-extra
+- wai-cors
 
 ghc-options:
 - -Wall

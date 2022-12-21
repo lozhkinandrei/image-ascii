@@ -1,34 +1,41 @@
 {-# LANGUAGE DeriveGeneric, OverloadedStrings #-}
 module Main where
 
-import           AsciiConverter.Lib     ( Config (Config, imageColor, imageWidth),
-                                          convertToAscii, resizeImage )
+import           AsciiConverter.Lib          ( Config (Config, imageColor, imageWidth),
+                                               convertToAscii, resizeImage )
 import           AsciiConverter.Read
 
-import           Conduit                ( runConduitRes, sinkList, takeCE,
-                                          (.|) )
+import           Conduit                     ( runConduitRes, sinkList, takeCE,
+                                               (.|) )
 
-import           Control.Exception      ( SomeException, try )
-import           Control.Monad          ( unless )
+import           Control.Exception           ( SomeException, try )
+import           Control.Monad               ( unless )
 import           Control.Monad.IO.Class
 
-import           Data.Aeson             ( ToJSON )
+import           Data.Aeson                  ( ToJSON )
 import           Data.ByteString
-import qualified Data.ByteString.Char8  ( readInt )
+import qualified Data.ByteString.Char8       ( readInt )
 import           Data.Foldable
 
 import           GHC.Generics
 
-import           Graphics.Image         ( Image, RGB, VS )
+import           Graphics.Image              ( Image, RGB, VS )
 
-import           Network.HTTP.Client    ( parseUrlThrow )
+import           Network.HTTP.Client         ( parseUrlThrow )
 import           Network.HTTP.Simple
-import           Network.HTTP.Types     ( hContentLength, status400 )
+import           Network.HTTP.Types          ( hContentLength, status400 )
+import           Network.Wai.Middleware.Cors ( simpleCors )
+import           Network.Wai.Middleware.Gzip ( def, gzip )
 
 import           Web.Scotty
 
 maxFileSize :: Int
 maxFileSize = 1024
+
+middlewares :: ScottyM ()
+middlewares = do
+    middleware simpleCors
+    middleware $ gzip def
 
 routes :: ScottyM ()
 routes = do
@@ -102,7 +109,7 @@ convertUrl = do
 main :: IO ()
 main = do
     putStrLn "Starting Server..."
-    scotty 3000 routes
+    scotty 3000 (middlewares >> routes)
 
 
 
