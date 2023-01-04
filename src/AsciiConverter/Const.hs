@@ -2,8 +2,7 @@ module AsciiConverter.Const
     (
         asciiCharactersMap,
         maxBrightness,
-        brightnessWeight,
-        maxImageWidth,
+        brightnessWeight
     ) where
 
 
@@ -15,6 +14,3 @@ maxBrightness = 255
 
 brightnessWeight :: Double
 brightnessWeight = fromIntegral (length asciiCharactersMap) / fromIntegral maxBrightness
-
-maxImageWidth :: Int
-maxImageWidth = 300
