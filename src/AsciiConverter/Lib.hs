@@ -25,7 +25,7 @@ data Config = Config
   }
 
 
-resizeImage :: Int -> Image VS RGB Double -> Image VS RGB Double
+resizeImage :: Array arr cs e => Int -> Image arr cs e -> Image arr cs e
 resizeImage width img = scale Bilinear Edge (scaleFactor, scaleFactor) img
     where
         currentWidth = I.cols img
