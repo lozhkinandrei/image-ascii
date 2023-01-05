@@ -22,19 +22,3 @@ COPY --from=build /root/.cabal/bin/image-ascii-exe  .
 
 EXPOSE 3000
 CMD ["./image-ascii-exe"]
-
-
-RUN apt-get -yq update && apt-get -yq --no-install-suggests --no-install-recommends install \
-    ca-certificates \
-    curl \
-    libgmp10 \
-    liblapack3 \
-    liblzma5 \
-    libpq5 \
-    libssl1.1 \
-    libyaml-0-2 \
-    netbase \
-    openssh-client \
-    zlib1g \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
