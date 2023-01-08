@@ -7,7 +7,8 @@ convertToAscii = (e) => {
         type: 'GET',
         data: {
             imageUrl: imageUrl,
-            color: color,
+            color: true,
+            width: 150
         },
         accepts: { json: "application/json, text/javascript" },
         success: function (res) {
