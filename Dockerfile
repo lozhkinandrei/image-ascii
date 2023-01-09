@@ -17,6 +17,22 @@ RUN cabal install
 
 # Copy binary from the prebious stage and discard everything else
 FROM debian:buster
+
+RUN apt-get -yq update && apt-get -yq --no-install-suggests --no-install-recommends install \
+    ca-certificates \
+    curl \
+    libgmp10 \
+    liblapack3 \
+    liblzma5 \
+    libpq5 \
+    libssl1.1 \
+    libyaml-0-2 \
+    netbase \
+    openssh-client \
+    zlib1g \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
 WORKDIR /opt/image-ascii
 COPY --from=build /root/.cabal/bin/image-ascii-exe  .
 
