@@ -30,6 +30,7 @@ function convertToAscii(e) {
 
             $('.ascii-art').css('transform', `scale(${scale})`)
             $('.ascii-art').css('margin-bottom', currentHeight * scale - currentHeight + 'px')
+            $('.ascii-art').css('margin-right', currentWidth * scale - currentWidth + 'px')
         },
         error: function (res) {
             errorMessage = res.status == 400 ? res.responseJSON.err : res.responseText
