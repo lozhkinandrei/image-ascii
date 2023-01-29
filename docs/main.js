@@ -22,10 +22,16 @@ function convertToAscii(e) {
         data: formData,
         accepts: { json: "application/json, text/javascript" },
         success: function (res) {
-            $(".ascii-art").empty().append(res['res']);
+            $(".ascii-art").append(res['res'])
+
+            currentWidth = $(".ascii-art").width()
+            currentHeight = $(".ascii-art").height()
+            scale = $('body .container .container').width() / currentWidth
+
+            $('.ascii-art').css('transform', `scale(${scale})`)
+            $('.ascii-art').css('margin-bottom', currentHeight * scale - currentHeight + 'px')
         },
         error: function (res) {
-
             errorMessage = res.status == 400 ? res.responseJSON.err : res.responseText
             $(form).find(".ascii-form-error").removeClass('d-none')
             $(form).find(".ascii-form-error").text(errorMessage)
