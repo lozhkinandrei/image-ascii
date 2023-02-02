@@ -13,38 +13,54 @@
 </head>
 
 <body>
-    <div class="container mt-4">
-        <div class="container">
-            <div class="row text-center">
-                <h1> Image to ASCII art converter</h1>
+    <main class="container mt-4">
+        <div class="row gy-4">
+            <div class="col-md-12 col-lg-6">
+                <img class='ascii-art-dummy w-100' src="./cat.jpg">
+                <div class="ascii-art"></div>
             </div>
-            <div class="text-center">
-                <img class='img-fluid' src="./elephant.png" alt="/red-mustang-1967">
-            </div>
-
-
-            <h4 class="text-center mt-2"> Try now </h4>
-
-            <div class="row">
-                <form id="ascii-form">
-                    <div class="mb-3">
-                        <label for="imageUrl" class="form-label">Paste your image URL</label>
-                        <input type="url" class="form-control" id="imageUrl" name="imageUrl">
-                    </div>
-                    <div class="mb-3">
-                        <label for="imageFile" class="form-label">Or upload file instead</label>
-                        <input class="form-control" type="file" id="imageFile" name="imageFile">
-                    </div>
-                    <div class="ascii-form-error text-danger mb-2 d-none"></div>
-                    <button type="submit" class="btn btn-primary" onclick="convertToAscii(event)">
-                        <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
-                        <span class="btn-text">Convert</span>
-                    </button>
-                </form>
-            </div>
-            <div class="ascii-art">
+            <div id="description" class="col-md-12 col-lg-6">
+                <div>
+                    <h3> Image to ASCII art converter </h3>
+                    <p> Transform your digital images into unique ASCII art masterpieces with our Haskell-powered
+                        converter. Experience the power and efficiency of functional programming as your images are
+                        converted into ASCII works of art in no time.
+                    </p>
+                </div>
+                <div class="mt-4">
+                    <form id="ascii-form">
+                        <div class="mb-3">
+                            <label for="imageUrl" class="form-label">Paste your image URL</label>
+                            <input type="url" class="form-control" id="imageUrl" name="imageUrl">
+                        </div>
+                        <div class="mb-3">
+                            <label for="imageFile" class="form-label">Or upload file instead</label>
+                            <input class="form-control" type="file" id="imageFile" name="imageFile">
+                        </div>
+                        <div class="mb-3">
+                            <label for="detalization" class="form-label">Detalization</label>
+                            <input type="range" class="form-range" min="30" max="300" step="10" name="width"
+                                id="detalization">
+                        </div>
+                        <div class="form-check mb-3">
+                            <label class="form-check-label" for="color">
+                                Colored
+                            </label>
+                            <input class="form-check-input" type="checkbox" id="color" name="color" checked>
+                        </div>
+                        <div class="ascii-form-error text-danger mb-2 d-none"></div>
+                        <button type="submit" class="btn btn-primary w-100" onclick="convertToAscii(event)">
+                            <span class="spinner-border spinner-border-sm d-none" role="status"
+                                aria-hidden="true"></span>
+                            <span class="btn-text">Convert</span>
+                        </button>
+                    </form>
+                </div>
 
             </div>
         </div>
-    </div>
+    </main>
+    <footer>
+        Source code: <a href="https://github.com/lozhkinandrei/image-ascii"> Github </a>
+    </footer>
 </body>

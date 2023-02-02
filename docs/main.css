@@ -1,22 +1,26 @@
+body {
+    display: grid;
+    /* main and footer for now */
+    grid-template-rows: auto auto;
+}
+
 footer {
-    position: fixed;
+    align-self: end;
     padding: 10px;
-    left: 0;
-    bottom: 0;
     width: 100%;
-    color: white;
+    color: rgb(0, 0, 0);
     text-align: center;
-    background-color: rgb(133, 66, 66);
 }
 
 .ascii-art {
     display: inline-block;
     font-family: monospace, fixed;
     font-size: 6px;
-    line-height: 0.65;
+    line-height: 0.67;
     font-weight: bold;
     width: fit-content;
     background-color: black;
     color: white;
     transform-origin: left top;
+    white-space: nowrap;
 }
